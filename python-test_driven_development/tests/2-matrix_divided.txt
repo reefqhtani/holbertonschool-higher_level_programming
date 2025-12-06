@@ -82,3 +82,9 @@ Test with infinity as divisor
 Test with negative infinity as divisor  
 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], float('-inf'))
 [[-0.0, -0.0, -0.0], [-0.0, -0.0, -0.0]]
+
+Test with missing argument
+>>> matrix_divided([[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
