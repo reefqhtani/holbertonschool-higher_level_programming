@@ -1,0 +1,62 @@
+Test cases for say_my_name function
+====================================
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test with both names
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+Test with only first name (last name defaults to empty string)
+>>> say_my_name("Bob")
+My name is Bob 
+
+Test with empty strings
+>>> say_my_name("", "")
+My name is  
+
+Test with special characters
+>>> say_my_name("John", "Doe-Smith")
+My name is John Doe-Smith
+
+>>> say_my_name("Mary-Jane", "Watson")
+My name is Mary-Jane Watson
+
+Error cases - type validation
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("John", 42)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name(12, 42)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(None, "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name([1, 2, 3], "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("John", {"last": "Smith"})
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
