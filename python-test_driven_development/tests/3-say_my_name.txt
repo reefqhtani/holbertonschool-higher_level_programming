@@ -60,3 +60,13 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
+
+Test with no arguments (missing both)
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Test with only first argument (already tested above as default behavior)
+>>> say_my_name("Alice")
+My name is Alice 
