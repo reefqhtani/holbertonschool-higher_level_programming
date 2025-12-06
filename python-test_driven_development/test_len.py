@@ -1,0 +1,12 @@
+text = "Holberton School"
+print(f"Text: '{text}'")
+print(f"Text length: {len(text)}")
+print("---")
+print("Using print():")
+print(text, end='')
+print("|END|")
+print(f"Output length without newline: {len(text)}")
+print("---")
+print("Using print() with default newline:")
+print(text)
+print("|END|")

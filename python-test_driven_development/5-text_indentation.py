@@ -1,49 +1,60 @@
 #!/usr/bin/python3
 """
-This module provides a function to print text with special indentation.
+Text Indentation Module
+
+This module provides a function that prints text with 2 new lines
+after each '.', '?', and ':' characters.
 """
 
 
 def text_indentation(text):
     """
-    Print text with 2 new lines after each '.', '?', and ':' character.
+    Prints text with 2 new lines after each '.', '?', and ':' characters.
 
     Args:
-        text: The text to process (must be a string)
-
-    Returns:
-        None: Prints the processed text to stdout
+        text (str): The text to format and print.
 
     Raises:
-        TypeError: If text is not a string
+        TypeError: If text is not a string.
+
+    Returns:
+        None: This function only prints the formatted text.
 
     Examples:
-        >>> text_indentation("Hello. World")
+        >>> text_indentation("Hello. World? Good: Morning")
         Hello.
-        World
-        >>> text_indentation("How are you? I'm fine.")
-        How are you?
-        I'm fine.
+        <BLANKLINE>
+        World?
+        <BLANKLINE>
+        Good:
+        <BLANKLINE>
+        Morning
     """
-    # Validate text is a string
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Process the text
-    result = ""
+    if not text:
+        return
+
+    # Remove leading and trailing spaces
+    text = text.strip()
+
     i = 0
-    while i < len(text):
-        result += text[i]
+    length = len(text)
+
+    while i < length:
+        # Print current character
+        print(text[i], end="")
+
+        # Check if current character is a separator
         if text[i] in ".?:":
-            result += "\n\n"
+            # Print two new lines
+            print("\n")
+
             # Skip any spaces immediately after the separator
             i += 1
-            while i < len(text) and text[i] == ' ':
+            while i < length and text[i] == " ":
                 i += 1
             continue
-        i += 1
 
-    # Print the result, stripping trailing spaces from each line
-    lines = result.split('\n')
-    for line in lines:
-        print(line.rstrip())
+        i += 1
