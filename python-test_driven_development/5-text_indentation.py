@@ -28,21 +28,39 @@ def text_indentation(text):
 
     i = 0
     length = len(text)
+    result = ""
 
     # Skip leading spaces
     while i < length and text[i] == ' ':
         i += 1
 
     while i < length:
-        print(text[i], end="")
+        result += text[i]
 
         if text[i] in ".?:":
-            print("\n")
+            result += "\n\n"
             i += 1
 
-            # Skip all whitespace after separator
-            while i < length and text[i] == ' ':
+            # Skip ALL whitespace characters (space, tab, newline)
+            while i < length and text[i] in " \t\n":
                 i += 1
+
+            # If next char is also a separator, add it without new lines
+            # This handles cases like "..."
+            while i < length and text[i] in ".?:":
+                result += text[i]
+                i += 1
+
             continue
 
         i += 1
+
+    # Remove trailing spaces from each line and print
+    lines = result.split('\n')
+    for i, line in enumerate(lines):
+        if i == len(lines) - 1:
+            # Last line - strip trailing spaces
+            print(line.rstrip(), end="")
+        else:
+            # Not last line - strip trailing spaces and print with newline
+            print(line.rstrip())
