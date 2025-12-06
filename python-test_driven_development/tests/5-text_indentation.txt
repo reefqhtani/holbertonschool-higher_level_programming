@@ -1,0 +1,111 @@
+Test cases for text_indentation function
+========================================
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test basic cases
+>>> text_indentation("Hello. World")
+Hello.
+World
+
+>>> text_indentation("How are you? I'm fine.")
+How are you?
+I'm fine.
+
+>>> text_indentation("This is a test: it should work")
+This is a test:
+it should work
+
+Test with multiple separators
+>>> text_indentation("First. Second? Third: Fourth.")
+First.
+Second?
+Third:
+Fourth.
+
+Test with consecutive separators
+>>> text_indentation("Hello... World??? Test::: More")
+Hello.
+.
+.
+World?
+?
+?
+Test:
+:
+:
+More
+
+Test with spaces around separators
+>>> text_indentation("Hello . World ? Test : End")
+Hello .
+World ?
+Test :
+End
+
+Test with no separators
+>>> text_indentation("Hello World")
+Hello World
+
+Test empty string
+>>> text_indentation("")
+
+
+Test with only separators
+>>> text_indentation(".?:")
+.
+?
+:
+
+Test with newlines in input
+>>> text_indentation("Hello.\nWorld?\nTest:")
+Hello.
+World?
+Test:
+
+Test the example from requirements
+>>> text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit.\
+... Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere?\
+... Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud:\
+... Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere.\
+... Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum\
+... rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo\
+... stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum\
+... cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio\
+... beatiorem! Iam ruinas videres"""
+>>> text_indentation(text)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Quonam modo?
+Utrum igitur tibi litteram videor an totas paginas commovere?
+Non autem hoc:
+igitur ne illud quidem.
+Fortasse id optimum, sed ubi illud:
+Plus semper voluptatis?
+Teneo, inquit, finem illi videri nihil dolere.
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+Si id dicis, vicimus.
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+Sin aliud quid voles, postea.
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+Error cases
+>>> text_indentation(123)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation([1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation({"text": "hello"})
+Traceback (most recent call last):
+...
+TypeError: text must be a string
