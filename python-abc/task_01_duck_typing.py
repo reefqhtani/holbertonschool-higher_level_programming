@@ -24,8 +24,6 @@ class Circle(Shape):
     
     def __init__(self, radius):
         """Initialize with radius"""
-        if not isinstance(radius, (int, float)):
-            raise TypeError("radius must be a number")
         self.radius = radius
     
     def area(self):
@@ -42,8 +40,6 @@ class Rectangle(Shape):
     
     def __init__(self, width, height):
         """Initialize with width and height"""
-        if not isinstance(width, (int, float)) or not isinstance(height, (int, float)):
-            raise TypeError("width and height must be numbers")
         self.width = width
         self.height = height
     
@@ -59,12 +55,6 @@ class Rectangle(Shape):
 def shape_info(shape):
     """
     Print area and perimeter using duck typing
-    
-    Args:
-        shape: Any object with area() and perimeter() methods
     """
-    # Pure duck typing - no type checking!
-    area = shape.area()
-    perimeter = shape.perimeter()
-    print(f"Area: {area}")
-    print(f"Perimeter: {perimeter}")
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
