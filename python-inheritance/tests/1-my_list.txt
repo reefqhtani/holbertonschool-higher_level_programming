@@ -1,6 +1,9 @@
-The print_sorted method prints a sorted view without modifying the list.
+MyList.print_sorted prints a sorted version of the list (ascending)
+without modifying the original list.
 
 >>> MyList = __import__('1-my_list').MyList
+
+Basic case:
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
@@ -13,3 +16,24 @@ The print_sorted method prints a sorted view without modifying the list.
 [1, 2, 3, 4, 5]
 >>> print(my_list)
 [1, 4, 2, 3, 5]
+
+Empty list:
+>>> empty = MyList()
+>>> empty.print_sorted()
+[]
+>>> print(empty)
+[]
+
+Negative numbers (unsorted appends):
+>>> neg = MyList()
+>>> neg.append(3)
+>>> neg.append(-1)
+>>> neg.append(2)
+>>> neg.append(-5)
+>>> neg.append(0)
+>>> print(neg)
+[3, -1, 2, -5, 0]
+>>> neg.print_sorted()
+[-5, -1, 0, 2, 3]
+>>> print(neg)
+[3, -1, 2, -5, 0]
