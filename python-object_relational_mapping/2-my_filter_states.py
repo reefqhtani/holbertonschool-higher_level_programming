@@ -26,7 +26,8 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Create SQL query using format with user input
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+    # Use BINARY for case-sensitive comparison
+    query = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC"
     query = query.format(state_name)
 
     # Execute SQL query
